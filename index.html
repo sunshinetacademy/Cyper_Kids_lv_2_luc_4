@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحاضرة الرابعة: التصفح الآمن | حراس المستقبل الرقمي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid #667eea;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 20px 0 15px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-right: 5px solid #fdcb6e;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-right: 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .code-block {
+            background: #2d3436;
+            color: #00cec9;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .icon {
+            font-size: 2em;
+            margin: 10px;
+        }
+        
+        .step-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-right: 4px solid #667eea;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+        
+        .quiz-section {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .quiz-question {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .quiz-options li {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-options li:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAgAElEQVR4Aey9ebBkx3Xmd2qvemt3v96AbqC7se8rCRAgKGIhKVLctZDSaELWjGSFxlaMZUc4POGQY6RxTMgejzWO8R8zDsV4tIxEDU1zMUUJBEmQIBZiIUCsxEZs3Y3eu9/+aq/r78u8WXWr3tb9qhv9li+7690tb2be363KzHPy5EkzBREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQARE......" alt="شعار الأكاديمية" class="logo">
+            </div>
+            <h1>المحاضرة الرابعة: التصفح الآمن</h1>
+            <p class="subtitle">كيف تتصفح الإنترنت بأمان وتحمي نفسك من التهديدات الإلكترونية</p>
+        </header>
+
+        <div class="content">
+            <!-- المقدمة -->
+            <div class="section">
+                <h2><span class="emoji">🌐</span> مقدمة: لماذا التصفح الآمن مهم؟</h2>
+                <p>
+                    في عصرنا الرقمي، أصبح الإنترنت جزءاً لا يتجزأ من حياتنا اليومية. نحن نتصفح المواقع، 
+                    نتسوق أونلاين، نتواصل مع الأصدقاء، ونتعلم أشياء جديدة. لكن هل تعلم أن كل نقرة 
+                    تقوم بها قد تعرضك لمخاطر أمنية؟
+                </p>
+                
+                <div class="highlight-box">
+                    <strong>إحصائية مذهلة:</strong> يتم إنشاء أكثر من 30,000 موقع ويب جديد يومياً، 
+                    ومن بينها آلاف المواقع الضارة التي تهدف لسرقة بياناتك أو إصابة جهازك بالفيروسات!
+                </div>
+
+                <h3>ما الذي سنتعلمه في هذه المحاضرة؟</h3>
+                <ul>
+                    <li>فهم بروتوكول HTTPS وكيف يحميك</li>
+                    <li>التعرف على هجمات التصيد الاحتيالي (Phishing)</li>
+                    <li>كيفية التحقق من أمان المواقع قبل زيارتها</li>
+                    <li>إعدادات المتصفح الأمنية المهمة</li>
+                    <li>الإضافات والأدوات التي تحميك أثناء التصفح</li>
+                    <li>ممارسات التصفح الآمن اليومية</li>
+                </ul>
+            </div>
+
+            <!-- HTTPS -->
+            <div class="section">
+                <h2><span class="emoji">🔒</span> بروتوكول HTTPS: درعك الأول</h2>
+                
+                <h3>ما هو HTTPS؟</h3>
+                <p>
+                    HTTPS (Hypertext Transfer Protocol Secure) هو النسخة الآمنة من بروتوكول HTTP. 
+                    يقوم بتشفير البيانات المتبادلة بين متصفحك والموقع الذي تزوره، مما يجعلها غير قابلة 
+                    للقراءة من قبل أي شخص يحاول اعتراضها.
+                </p>
+
+                <div class="info-box">
+                    <strong>كيف يعمل التشفير؟</strong><br>
+                    تخيل أنك ترسل رسالة سرية لصديقك. بدلاً من إرسالها في ظرف شفاف يمكن لأي شخص 
+                    قراءته، تضعها في صندوق مقفل بمفتاح سري. فقط أنت وصديقك لديكم المفتاح لفتح الصندوق 
+                    وقراءة الرسالة. هذا بالضبط ما يفعله HTTPS!
+                </div>
+
+                <h3>الفرق بين HTTP و HTTPS</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>HTTP</th>
+                        <th>HTTPS</th>
+                    </tr>
+                    <tr>
+                        <td>❌ غير مشفر</td>
+                        <td>✅ مشفر بالكامل</td>
+                    </tr>
+                    <tr>
+                        <td>❌ البيانات مرئية للجميع</td>
+                        <td>✅ البيانات محمية</td>
+                    </tr>
+                    <tr>
+                        <td>❌ عرضة للاعتراض</td>
+                        <td>✅ محمي من الاعتراض</td>
+                    </tr>
+                    <tr>
+                        <td>❌ لا يوجد قفل في المتصفح</td>
+                        <td>✅ يظهر رمز القفل 🔒</td>
+                    </tr>
+                    <tr>
+                        <td>❌ غير آمن للمعاملات المالية</td>
+                        <td>✅ آمن للمعاملات الحساسة</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>️ تحذير مهم:</strong> إذا كنت تدخل معلومات حساسة مثل كلمات المرور 
+                    أو بيانات البطاقة الائتمانية في موقع يستخدم HTTP، فهذه المعلومات يمكن سرقتها بسهولة!
+                </div>
+
+                <h3>كيف تتحقق من وجود HTTPS؟</h3>
+                <div class="step-box">
+                    <span class="step-number">1</span>
+                    <strong>انظر إلى شريط العنوان:</strong> يجب أن يبدأ الرابط بـ https:// وليس http://
+                </div>
+                <div class="step-box">
+                    <span class="step-number">2</span>
+                    <strong>ابحث عن رمز القفل:</strong> 🔒 يظهر قفل صغير على يسار شريط العنوان
+                </div>
+                <div class="step-box">
+                    <span class="step-number">3</span>
+                    <strong>اضغط على القفل:</strong> لرؤية تفاصيل الشهادة الأمنية والتأكد من صحة الموقع
+                </div>
+            </div>
+
+            <!-- التصيد الاحتيالي -->
+            <div class="section">
+                <h2><span class="emoji">🎣</span> التصيد الاحتيالي (Phishing): كيف تتجنب الوقوع في الفخ؟</h2>
+                
+                <p>
+                    التصيد الاحتيالي هو أحد أخطر الهجمات الإلكترونية. يحاول المهاجمون خداعك لجعلك 
+                    تكشف عن معلومات حساسة مثل كلمات المرور أو بيانات بطاقات الائتمان.
+                </p>
+
+                <h3>أنواع هجمات التصيد</h3>
+                
+                <div class="step-box">
+                    <h4>1. التصيد عبر البريد الإلكتروني </h4>
+                    <p>
+                        تصلك رسالة تبدو وكأنها من بنكك أو شركة معروفة، تطلب منك النقر على رابط 
+                        وتحديث معلوماتك. الرابط يؤدي إلى موقع مزيف يشبه الموقع الأصلي تماماً!
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h4>2. التصيد عبر الرسائل النصية (Smishing) 📱</h4>
+                    <p>
+                        رسائل SMS تدعي أنك ربحت جائزة أو أن هناك مشكلة في حسابك البنكي، 
+                        وتطلب منك النقر على رابط.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h4>3. التصيد الصوتي (Vishing) </h4>
+                    <p>
+                        مكالمة هاتفية من شخص يدعي أنه من الدعم الفني ويطلب معلوماتك الشخصية.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h4>4. التصيد المستهدف (Spear Phishing) 🎯</h4>
+                    <p>
+                        هجوم مخصص يستهدف شخصاً معيناً باستخدام معلومات شخصية عنه لجعل الهجوم 
+                        يبدو أكثر مصداقية.
+                    </p>
+                </div>
+
+                <h3>علامات التحذير من مواقع التصيد</h3>
+                <div class="warning-box">
+                    <ul>
+                        <li>❌ أخطاء إملائية ونحوية في الصفحة</li>
+                        <li> عناوين URL غريبة أو مختلفة قليلاً عن الموقع الأصلي</li>
+                        <li>❌ طلب معلومات شخصية أو مالية بشكل عاجل</li>
+                        <li>❌ شعور بالإلحاح والتهديد ("حسابك سيُغلق خلال 24 ساعة!")</li>
+                        <li>❌ روابط مختصرة لا تعرف وجهتها الحقيقية</li>
+                        <li>❌ عدم وجود شهادة SSL (لا يوجد قفل 🔒)</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <strong> نصيحة ذهبية:</strong> إذا شككت في رسالة أو موقع، لا تنقر على أي رابط! 
+                    اذهب مباشرة إلى الموقع الرسمي عن طريق كتابة العنوان بنفسك في المتصفح.
+                </div>
+            </div>
+
+            <!-- إعدادات المتصفح -->
+            <div class="section">
+                <h2><span class="emoji">⚙️</span> إعدادات المتصفح الأمنية</h2>
+                
+                <p>
+                    متصفحك هو خط الدفاع الأول ضد التهديدات الإلكترونية. إليك أهم الإعدادات 
+                    التي يجب تفعيلها:
+                </p>
+
+                <h3>1. تحديث المتصفح باستمرار</h3>
+                <p>
+                    المطورون يصدرون تحديثات أمنية بانتظام لإصلاح الثغرات. تأكد من تفعيل 
+                    التحديثات التلقائية في متصفحك.
+                </p>
+
+                <h3>2. تفعيل الحماية من التصيد والبرمجيات الخبيثة</h3>
+                <p>
+                    معظم المتصفحات الحديثة تحتوي على حماية مدمجة ضد المواقع الضارة. 
+                    تأكد من تفعيل هذه الميزة في الإعدادات.
+                </p>
+
+                <h3>3. إدارة ملفات تعريف الارتباط (Cookies)</h3>
+                <p>
+                    ملفات الكوكيز يمكن استخدامها لتتبع تصفحك. قم بإعدادات خصوصية صارمة 
+                    وامسح الكوكيز بانتظام.
+                </p>
+
+                <h3>4. استخدام وضع التصفح الخاص</h3>
+                <p>
+                    عند استخدام أجهزة عامة أو مشتركة، استخدم وضع التصفح الخاص (Incognito/Private) 
+                    الذي لا يحفظ سجل التصفح أو الكوكيز.
+                </p>
+
+                <div class="code-block">
+// كيفية الوصول للإعدادات الأمنية في Chrome:
+1. اضغط على النقاط الثلاث ⋮ في الأعلى
+2. اختر "الإعدادات" Settings
+3. انتقل إلى "الخصوصية والأمان" Privacy and security
+4. فعل خيارات الحماية المطلوبة
+                </div>
+            </div>
+
+            <!-- الإضافات الأمنية -->
+            <div class="section">
+                <h2><span class="emoji"></span> إضافات المتصفح الأمنية الموصى بها</h2>
+                
+                <p>
+                    هناك إضافات (Extensions) رائعة يمكنها تعزيز أمان تصفحك بشكل كبير:
+                </p>
+
+                <div class="step-box">
+                    <h4>🔒 HTTPS Everywhere</h4>
+                    <p>
+                        تجبر هذه الإضافة المتصفح على استخدام HTTPS whenever possible، 
+                        حتى لو كان الموقع يدعم HTTP فقط.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h4>🛡️ uBlock Origin</h4>
+                    <p>
+                        مانع إعلانات قوي يمنع الإعلانات الضارة والنوافذ المنبثقة المشبوهة 
+                        التي قد تحتوي على برمجيات خبيثة.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h4>🔍 Web of Trust (WOT)</h4>
+                    <p>
+                        تظهر لك تقييمات أمان المواقع بناءً على آراء المستخدمين والخبراء، 
+                        لتنبيهك قبل زيارة موقع مشبوه.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h4>🔑 LastPass / Bitwarden</h4>
+                    <p>
+                        مدير كلمات مرور يساعدك في إنشاء وتخزين كلمات مرور قوية وفريدة 
+                        لكل موقع دون الحاجة لحفظها جميعاً.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>️ تحذير:</strong> قم بتثبيت الإضافات فقط من المتجر الرسمي للمتصفح 
+                    (Chrome Web Store, Firefox Add-ons) وتجنب المصادر غير الموثوقة!
+                </div>
+            </div>
+
+            <!-- ممارسات التصفح الآمن -->
+            <div class="section">
+                <h2><span class="emoji">✅</span> أفضل ممارسات التصفح الآمن</h2>
+                
+                <ol>
+                    <li>
+                        <strong>تحقق دائماً من عنوان URL:</strong> 
+                        تأكد من أنك في الموقع الصحيح قبل إدخال أي معلومات.
+                    </li>
+                    <li>
+                        <strong>لا تنقر على الروابط المشبوهة:</strong> 
+                        سواء في الإيميل أو الرسائل النصية أو وسائل التواصل الاجتماعي.
+                    </li>
+                    <li>
+                        <strong>استخدم شبكة VPN:</strong> 
+                        خاصة عند استخدام شبكات Wi-Fi العامة في المقاهي والمطارات.
+                    </li>
+                    <li>
+                        <strong>فعّل المصادقة الثنائية (2FA):</strong> 
+                        لجميع حساباتك المهمة لإضافة طبقة حماية إضافية.
+                    </li>
+                    <li>
+                        <strong>راقب حساباتك البنكية:</strong> 
+                        راجع كشوف الحساب بانتظام للكشف عن أي نشاط مشبوه.
+                    </li>
+                    <li>
+                        <strong>لا تستخدم نفس كلمة المرور:</strong> 
+                        لكل موقع كلمة مرور فريدة وقوية.
+                    </li>
+                    <li>
+                        <strong>احذر من النوافذ المنبثقة:</strong> 
+                        لا تثق في النوافذ التي تدعي أن جهازك مصاب بفيروس وتطلب تحميل برنامج.
+                    </li>
+                    <li>
+                        <strong>تعلم قراءة شهادات SSL:</strong> 
+                        تحقق من أن الشهادة صالحة وموجهة للموقع الصحيح.
+                    </li>
+                </ol>
+
+                <div class="success-box">
+                    <strong> تذكر:</strong> الأمان الرقمي ليس منتجاً تشتريه، بل هو عادة تمارسها يومياً!
+                </div>
+            </div>
+
+            <!-- اختبار تفاعلي -->
+            <div class="quiz-section">
+                <h2 style="color: white; border-bottom-color: white;">📝 اختبر معلوماتك</h2>
+                
+                <div class="quiz-question">
+                    <h3>السؤال 1: ما الذي يشير إليه رمز القفل 🔒 في شريط العنوان؟</h3>
+                    <ul class="quiz-options">
+                        <li>أ) الموقع مجاني</li>
+                        <li>ب) الاتصال مشفر وآمن ✅</li>
+                        <li>ج) الموقع رسمي حكومي</li>
+                        <li>د) لا يوجد فيروسات</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>السؤال 2: أي من العلامات التالية تشير إلى محاولة تصيد احتيالي؟</h3>
+                    <ul class="quiz-options">
+                        <li>أ) الموقع يستخدم HTTPS</li>
+                        <li>ب) وجود أخطاء إملائية وشعور بالإلحاح ✅</li>
+                        <li>ج) الموقع معروف ومشهور</li>
+                        <li>د) الطلب معلومات عامة فقط</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>السؤال 3: ما هي أفضل طريقة للتحقق من أمان موقع قبل إدخال بياناتك؟</h3>
+                    <ul class="quiz-options">
+                        <li>أ) النقر على أول رابط يظهر في البحث</li>
+                        <li>ب) كتابة العنوان يدوياً والتحقق من القفل 🔒 ✅</li>
+                        <li>ج) الثقة في تصميم الموقع الجميل</li>
+                        <li>د) سؤال صديق عبر واتساب</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>السؤال 4: لماذا يجب تجنب استخدام شبكات Wi-Fi العامة بدون VPN؟</h3>
+                    <ul class="quiz-options">
+                        <li>أ) لأنها بطيئة</li>
+                        <li>ب) لأنها مجانية</li>
+                        <li>ج) لأنه يمكن اعتراض بياناتك بسهولة ✅</li>
+                        <li>د) لأنها لا تدعم HTTPS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ملخص -->
+            <div class="section">
+                <h2><span class="emoji">📋</span> ملخص المحاضرة</h2>
+                
+                <div class="highlight-box">
+                    <h3>النقاط الرئيسية:</h3>
+                    <ul>
+                        <li>🔒 HTTPS يحمي بياناتك بالتشفير - ابحث عن القفل دائماً</li>
+                        <li> التصيد الاحتيالي يعتمد على الخداع النفسي - كن حذراً</li>
+                        <li>⚙️ إعدادات المتصفح الصحيحة هي خط دفاعك الأول</li>
+                        <li>🧩 الإضافات الأمنية تعزز حمايتك بشكل كبير</li>
+                        <li>✅ الممارسات الجيدة تصبح عادات تحميك يومياً</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 تحدي الأسبوع:</h3>
+                    <p>
+                        قم بفحص 5 مواقع تزورها يومياً وتأكد من أنها تستخدم HTTPS. 
+                        تحقق من إعدادات الخصوصية في متصفحك وفعل الحماية من التصيد. 
+                        شارك ما تعلمته مع صديق أو فرد من عائلتك!
+                    </p>
+                </div>
+            </div>
+
+            <!-- موارد إضافية -->
+            <div class="section">
+                <h2><span class="emoji">📚</span> موارد إضافية للتعلم</h2>
+                
+                <ul>
+                    <li>
+                        <strong>Have I Been Pwned:</strong> 
+                        <a href="https://haveibeenpwned.com" target="_blank" style="color: #667eea;">haveibeenpwned.com</a> 
+                        - تحقق إذا كانت بياناتك مسربة
+                    </li>
+                    <li>
+                        <strong>Google Safety Center:</strong> 
+                        <a href="https://safety.google" target="_blank" style="color: #667eea;">safety.google</a> 
+                        - نصائح أمنية من جوجل
+                    </li>
+                    <li>
+                        <strong>Mozilla Privacy:</strong> 
+                        <a href="https://mozilla.org/privacy" target="_blank" style="color: #667eea;">mozilla.org/privacy</a> 
+                        - دليل الخصوصية من فايرفوكس
+                    </li>
+                    <li>
+                        <strong>Cybersecurity & Infrastructure Security Agency:</strong> 
+                        <a href="https://cisa.gov" target="_blank" style="color: #667eea;">cisa.gov</a> 
+                        - وكالة الأمن السيبراني الأمريكية
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🛡️ حراس المستقبل الرقمي | المحاضرة الرابعة: التصفح الآمن</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                تم إعداد هذا المحتوى التعليمي لتعزيز الوعي الأمني الرقمي<br>
+                © 2024 جميع الحقوق محفوظة
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // إضافة تفاعل بسيط للأسئلة
+        document.querySelectorAll('.quiz-options li').forEach(option => {
+            option.addEventListener('click', function() {
+                // إزالة التحديد السابق
+                this.parentElement.querySelectorAll('li').forEach(li => {
+                    li.style.background = '#f8f9fa';
+                    li.style.color = '#333';
+                });
+                
+                // تحديد الإجابة المختارة
+                this.style.background = '#667eea';
+                this.style.color = 'white';
+                
+                // التحقق من الإجابة الصحيحة
+                if (this.textContent.includes('✅')) {
+                    setTimeout(() => {
+                        alert('🎉 إجابة صحيحة! أحسنت!');
+                    }, 300);
+                } else {
+                    setTimeout(() => {
+                        alert(' حاول مرة أخرى! اقرأ السؤال بعناية.');
+                    }, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
